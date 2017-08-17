@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Author: zhongliang.jiang
 # @Date:   2017-08-16 14:57:39
-# @Last Modified time: 2017-08-17 10:25:21
+# @Last Modified time: 2017-08-17 10:50:54
 import requests
 import fileinput
 import time
@@ -25,7 +25,7 @@ class stock_bar_crawler(object):
     # stock year
     _year = 'last'
     # local file save path
-    _save_flie_path = '../data/' + _year + '/'
+    _save_data_path = '../data/'
     # flag stock code
     _stock_code = '600000'
 
@@ -42,9 +42,10 @@ class stock_bar_crawler(object):
             stock symbol file
         """
         self._year = year
+        file_path = self._save_data_path + self._year
 
-        if not os.path.exists(self._save_flie_path):
-            os.makedirs(self._save_flie_path)
+        if not os.path.exists(file_path):
+            os.makedirs(file_path)
 
 
         for line in open(stock_symbol_file_name):
@@ -107,7 +108,7 @@ class stock_bar_crawler(object):
 
             contents = "\n".join(contents)
 
-            file_name = self._save_flie_path + '%s.txt' % (t_id)
+            file_name = self._save_data_path + self._year + '/%s.txt' % (t_id)
             file_object = open(file_name, 'w+')
             try:
                 file_object.write(contents)
@@ -167,8 +168,32 @@ def main():
     """
 
     crawler = stock_bar_crawler()
-    crawler.craw_stocks(STOCK_SYMBOL_FILE, 'last')
-    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2016')
+    # crawler.craw_stocks(STOCK_SYMBOL_FILE, 'last')
+    # crawler.craw_stocks(STOCK_SYMBOL_FILE, '2016')
+    # crawler.craw_stocks(STOCK_SYMBOL_FILE, '2015')
+    # crawler.craw_stocks(STOCK_SYMBOL_FILE, '2014')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2013')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2012')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2011')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2010')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2009')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2008')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2007')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2006')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2005')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2004')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2003')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2002')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2001')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '2000')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '1999')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '1998')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '1997')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '1996')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '1995')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '1994')
+    crawler.craw_stocks(STOCK_SYMBOL_FILE, '1993')
+
 
 if __name__ == '__main__':
     main()
